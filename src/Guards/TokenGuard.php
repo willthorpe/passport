@@ -203,8 +203,6 @@ class TokenGuard
         try {
             return $this->server->validateAuthenticatedRequest($psr);
         } catch (OAuthServerException $e) {
-            $request->headers->set('Authorization', '', true);
-
             Container::getInstance()->make(
                 ExceptionHandler::class
             )->report($e);
